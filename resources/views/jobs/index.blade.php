@@ -1,7 +1,7 @@
 <x-layout>
     <ul>
         @forelse ($jobs as $job)
-            <li>{{ $job }}</li>
+            <li>{{ $job->title }}</li>
         @empty
             <li>No Jobs Found</li>
         @endforelse
