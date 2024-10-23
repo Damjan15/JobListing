@@ -37,9 +37,9 @@ class JobController extends Controller
 
     // @desc   Show a single job
     // @route  GET /jobs/{id}
-    public function show(string $id): string
+    public function show(Job $job): View
     {
-        return "Showing job $id";
+        return view('jobs.show', compact('job'));
     }
 
     // @desc   Show the form for editing a job
