@@ -24,7 +24,15 @@
     @endif
     
     <main class="container mx-auto p-4 mt-4">
+        @if (session('success'))
+            <x-alert type="success" message="{{session('success')}}" />
+        @endif
+
         {{ $slot }}
+
+        @if (session('error'))
+            <x-alert type="error" message="{{session('error')}}" />
+        @endif
     </main>
 
     <script src="{{ asset('js/script.js') }}"></script>
