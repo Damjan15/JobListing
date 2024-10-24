@@ -131,8 +131,16 @@ class JobController extends Controller
 
     // @desc  Delete a job
     // @route DELETE /jobs/{id}
-    public function destroy(string $id): string
+    public function destroy(Job $job): RedirectResponse
     {
-        return "Delete job $id";
+        // If there is a company logo delete it from storage
+        if ($job->company_logo) {
+            Storage::delete('public/logos' . $job->company_logo);
+        }
+
+        // Delete the job
+        $job->delete();
+
+        return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
 }
